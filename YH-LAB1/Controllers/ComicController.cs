@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using YH_LAB1.Controllers.Dto;
 using YH_LAB1.Services.XKCD;
 
 namespace YH_LAB1.Controllers
@@ -16,11 +17,15 @@ namespace YH_LAB1.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<ComicDto> Get(int id)
         {
             var comic = xKCDService.GetComic(id);
 
-            return comic.Title;
+            return new ComicDto()
+            {
+                Title = comic.Title,
+                Transcript = comic.Transcript
+            };
         }
     }
 
