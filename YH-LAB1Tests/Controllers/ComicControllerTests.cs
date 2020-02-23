@@ -16,7 +16,7 @@ namespace YH_LAB1.Controllers.Tests
         {
 
             // Arrange:
-            IXKCDService xkcdService = new XKCDServiceFake();
+            var xkcdService = new XKCDServiceFake();
             var systemUnderTest = new ComicController(xkcdService);
 
             //Act
@@ -24,6 +24,23 @@ namespace YH_LAB1.Controllers.Tests
 
             //Assert
             Assert.AreEqual("Detta är ett test", comic.Value.Title);
+            Assert.AreEqual("Lorum Ipsum...", comic.Value.Transcript);
+        }
+
+
+        [TestMethod()]
+        public void Get_Should_Call_XKCDService_OneTime()
+        {
+
+            // Arrange:
+            var xkcdService = new XKCDServiceFake();
+            var systemUnderTest = new ComicController(xkcdService);
+
+            //Act
+            var comic = systemUnderTest.Get(1);
+
+            //Assert
+            Assert.AreEqual(xkcdService.GetComicCalled, 1);
             Assert.AreEqual("Lorum Ipsum...", comic.Value.Transcript);
         }
     }
