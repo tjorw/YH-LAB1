@@ -41,7 +41,6 @@ namespace YH_LAB1.Controllers.Tests
 
             //Assert
             Assert.AreEqual(xkcdService.GetComicCalled, 1);
-            Assert.AreEqual("Lorum Ipsum...", comic.Value.Transcript);
         }
     }
 }
