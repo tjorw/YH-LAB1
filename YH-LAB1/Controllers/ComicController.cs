@@ -23,8 +23,8 @@ namespace YH_LAB1.Controllers
 
             return new ComicDto()
             {
-                Title = comic.Transcript,
-                Transcript = comic.Title
+                Title = comic.Title,
+                Transcript = comic.Transcript
             };
         }
     }
